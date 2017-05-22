@@ -353,6 +353,10 @@ function validParentheses(parens) {
   let openParens = [];
   let closedParens = [];
 
+  if (parens[0] === ")" || parens[parens.length - 1] === "(") {
+    return false;
+  }
+
   for (let i = 0; i < parens.length; i++) {
     if (parens[i] === "(") {
       openParens.push(parens[i]);
@@ -360,16 +364,13 @@ function validParentheses(parens) {
       closedParens.push(parens[i]);
     }
   }
-  console.log(openParens);
-  console.log(closedParens);
+
   if (openParens.length === closedParens.length) {
-    console.log(true);
     return true;
   }
-  console.log(false);
   return false;
+};
 
-}
 validParentheses("(())((()())())")
 
 //----------#10 END OF VALID PARENTHESIS------------------
