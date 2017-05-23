@@ -2,22 +2,22 @@
 
 //----------#1 SEQUENCE SUM----------
 
-function sequenceSum(start, end, step) {
-  let current = start;
-  let series = [];
-  if (start > end) {
-    return 0;
-  }
-  while (current <= end) {
-    series.push(current);
-    current += step;
-  }
-  let sum = series.reduce(function(acc, curr) {
-    return acc + curr;
-  });
-  console.log(sum);
-  return sum;
-}
+// function sequenceSum(start, end, step) {
+//   let current = start;
+//   let series = [];
+//   if (start > end) {
+//     return 0;
+//   }
+//   while (current <= end) {
+//     series.push(current);
+//     current += step;
+//   }
+//   let sum = series.reduce(function(acc, curr) {
+//     return acc + curr;
+//   });
+//   console.log(sum);
+//   return sum;
+// }
 // sequenceSum(2, 6, 2);
 
 //  OPTIMIZED SOLUTION
@@ -44,20 +44,20 @@ function sequenceSum(start, end, step) {
 // likes ["Max", "John", "Mark"] // must be "Max, John and Mark like this"
 // likes ["Alex", "Jacob", "Mark", "Max"] // must be "Alex, Jacob and 2 others like this"
 
-function likes(arr) {
-  if (arr.length < 1) {
-    return "no one likes this";
-  } else if (arr.length === 1) {
-    return arr[0] + " likes this";
-  } else if (arr.length === 2) {
-    return arr[0] + " and " + arr[1] + " like this";
-  } else if (arr.length === 3) {
-    return arr[0] + ", " + arr[1] + " and " + arr[2] + " like this";
-  } else {
-    let others = arr.length - 2;
-    return arr[0] + ", " + arr[1] + " and " + others + " others like this";
-  }
-}
+// function likes(arr) {
+//   if (arr.length < 1) {
+//     return "no one likes this";
+//   } else if (arr.length === 1) {
+//     return arr[0] + " likes this";
+//   } else if (arr.length === 2) {
+//     return arr[0] + " and " + arr[1] + " like this";
+//   } else if (arr.length === 3) {
+//     return arr[0] + ", " + arr[1] + " and " + arr[2] + " like this";
+//   } else {
+//     let others = arr.length - 2;
+//     return arr[0] + ", " + arr[1] + " and " + others + " others like this";
+//   }
+// }
 // likes(["Alex", "Jacob", "Mark", "Max"]);
 
 //-----OPTIMIZED SOLUTION---------
@@ -87,15 +87,15 @@ function likes(arr) {
 // uniqueInOrder('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']
 // uniqueInOrder([1,2,2,3,3])       == [1,2,3]
 
-function uniqueInOrder(sequence) {
-  let list = [];
-  for (let i = 0; i < sequence.length; i++) {
-    if (sequence[i] !== list[list.length - 1]) {
-      list.push(sequence[i]);
-    }
-  }
-  return list;
-}
+// function uniqueInOrder(sequence) {
+//   let list = [];
+//   for (let i = 0; i < sequence.length; i++) {
+//     if (sequence[i] !== list[list.length - 1]) {
+//       list.push(sequence[i]);
+//     }
+//   }
+//   return list;
+// }
 
 // uniqueInOrder('AAAABBBCCDAABBB');
 
@@ -109,23 +109,23 @@ function uniqueInOrder(sequence) {
 //
 // Note: If the number is a multiple of both 3 and 5, only count it once.
 
-function solution(number) {
-  let arrayToSum = [];
-  let count = 1;
-  while (count < number) {
-    if (count % 3 === 0 || count % 5 === 0) {
-      arrayToSum.push(count);
-    }
-    count++;
-  }
-  if (arrayToSum.length !== 0) {
-    let sum = arrayToSum.reduce((acc, curr) => {
-      return acc + curr;
-    });
-    return sum;
-  }
-  return 0;
-}
+// function solution(number) {
+//   let arrayToSum = [];
+//   let count = 1;
+//   while (count < number) {
+//     if (count % 3 === 0 || count % 5 === 0) {
+//       arrayToSum.push(count);
+//     }
+//     count++;
+//   }
+//   if (arrayToSum.length !== 0) {
+//     let sum = arrayToSum.reduce((acc, curr) => {
+//       return acc + curr;
+//     });
+//     return sum;
+//   }
+//   return 0;
+// }
 // solution(0);
 
 //   OPTIMIZED SOLUTION
@@ -148,19 +148,19 @@ function solution(number) {
 //
 // pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
 
-function pigIt(string) {
-  let words = string.split(' ');
-  let pigLatinWords = [];
-  for (let i = 0; i < words.length; i++) {
-    let letters = words[i].split('');
-    let popped = letters.shift();
-    letters.push(popped, 'ay');
-    let latinString = letters.join('');
-    pigLatinWords.push(latinString);
-  }
-  return pigLatinWords.join(' ');
-}
-pigIt('Pig latin is cool');
+// function pigIt(string) {
+//   let words = string.split(' ');
+//   let pigLatinWords = [];
+//   for (let i = 0; i < words.length; i++) {
+//     let letters = words[i].split('');
+//     let popped = letters.shift();
+//     letters.push(popped, 'ay');
+//     let latinString = letters.join('');
+//     pigLatinWords.push(latinString);
+//   }
+//   return pigLatinWords.join(' ');
+// }
+// pigIt('Pig latin is cool');
 
 
 //    OPTIMIZED SOLUTION
@@ -184,17 +184,17 @@ pigIt('Pig latin is cool');
 // spinWords( "This is a test") => returns "This is a test"
 // spinWords( "This is another test" )=> returns "This is rehtona test"
 
-function spinWords(string) {
-  let wordArray = string.split(' ');
-  for (let i = 0; i < wordArray.length; i++) {
-    if (wordArray[i].length > 4) {
-      wordArray[i] = wordArray[i].split('')
-        .reverse()
-        .join('');
-    }
-  }
-  return wordArray.join(' ');
-}
+// function spinWords(string) {
+//   let wordArray = string.split(' ');
+//   for (let i = 0; i < wordArray.length; i++) {
+//     if (wordArray[i].length > 4) {
+//       wordArray[i] = wordArray[i].split('')
+//         .reverse()
+//         .join('');
+//     }
+//   }
+//   return wordArray.join(' ');
+// }
 // spinWords("This is another test");
 
 //OPTIMIZED SOLUTION
@@ -226,17 +226,17 @@ function spinWords(string) {
 // => 1 + 5
 // => 6
 
-function digital_root(number) {
-  let stringifiedNumber = number.toString();
-  stringifiedNumber = stringifiedNumber.split('');
-  let reducedNumber = stringifiedNumber.reduce((acc, curr) => {
-    return parseInt(acc) + parseInt(curr);
-  });
-  if (stringifiedNumber.length > 1) {
-    return digital_root(reducedNumber);
-  }
-  return parseInt(reducedNumber);
-}
+// function digital_root(number) {
+//   let stringifiedNumber = number.toString();
+//   stringifiedNumber = stringifiedNumber.split('');
+//   let reducedNumber = stringifiedNumber.reduce((acc, curr) => {
+//     return parseInt(acc) + parseInt(curr);
+//   });
+//   if (stringifiedNumber.length > 1) {
+//     return digital_root(reducedNumber);
+//   }
+//   return parseInt(reducedNumber);
+// }
 // digital_root(16);
 
 //----------#7 SUM OF DIGITAL ROOT---------------------
@@ -245,29 +245,29 @@ function digital_root(number) {
 // Given an array, find the int that appears an odd number of times.
 // There will always be only one integer that appears an odd number of times.
 
-function findOdd(array) {
-  let count = 0;
-  let previous = null;
-  let sortedArray = array.sort();
-  for (let i = 0; i < sortedArray.length; i++) {
-    if (sortedArray[i] === previous) {
-      count++;
-      previous = sortedArray[i];
-    } else if (sortedArray[i] !== previous) {
-      if (sortedArray[i] !== previous && count % 2 !== 0) {
-        return previous;
-      }
-      previous = sortedArray[i];
-      count = 1;
-    }
-  }
-  if (count % 2 !== 0) {
-    return previous;
-  } else {
-    return "No odds found";
-  }
-}
-findOdd([1, 1, 1, 1, 1, 1, 10, 1, 1, 1, 1]);
+// function findOdd(array) {
+//   let count = 0;
+//   let previous = null;
+//   let sortedArray = array.sort();
+//   for (let i = 0; i < sortedArray.length; i++) {
+//     if (sortedArray[i] === previous) {
+//       count++;
+//       previous = sortedArray[i];
+//     } else if (sortedArray[i] !== previous) {
+//       if (sortedArray[i] !== previous && count % 2 !== 0) {
+//         return previous;
+//       }
+//       previous = sortedArray[i];
+//       count = 1;
+//     }
+//   }
+//   if (count % 2 !== 0) {
+//     return previous;
+//   } else {
+//     return "No odds found";
+//   }
+// }
+// findOdd([1, 1, 1, 1, 1, 1, 10, 1, 1, 1, 1]);
 //OPTIMIZED SOLUTION
 // function findOdd(a) {
 //   a = a.sort();
@@ -302,25 +302,25 @@ findOdd([1, 1, 1, 1, 1, 1, 10, 1, 1, 1, 1]);
 // Test.assertEquals(humanReadable(86399), '23:59:59', 'humanReadable(86399)');
 // Test.assertEquals(humanReadable(359999), '99:59:59', 'humanReadable(359999)');
 
-function humanReadable(sec) {
-  let hours = Math.floor(sec / 3600);
-  if (hours.toString()
-    .length < 2) {
-    hours = "0" + hours;
-  }
-  let minutes = Math.floor(sec % 3600 / 60);
-  if (minutes.toString()
-    .length < 2) {
-    minutes = "0" + minutes;
-  }
-  let seconds = sec % 60;
-  if (seconds.toString()
-    .length < 2) {
-    seconds = "0" + seconds;
-  }
-  let time = hours + ":" + minutes + ":" + seconds;
-  return time;
-}
+// function humanReadable(sec) {
+//   let hours = Math.floor(sec / 3600);
+//   if (hours.toString()
+//     .length < 2) {
+//     hours = "0" + hours;
+//   }
+//   let minutes = Math.floor(sec % 3600 / 60);
+//   if (minutes.toString()
+//     .length < 2) {
+//     minutes = "0" + minutes;
+//   }
+//   let seconds = sec % 60;
+//   if (seconds.toString()
+//     .length < 2) {
+//     seconds = "0" + seconds;
+//   }
+//   let time = hours + ":" + minutes + ":" + seconds;
+//   return time;
+// }
 // humanReadable(359999);
 
 // OPTIMIZED SOLUTION
@@ -349,28 +349,221 @@ function humanReadable(sec) {
 // All input strings will be nonempty, and will only consist of open parentheses '(' and/or closed parentheses ')'
 
 
-function validParentheses(parens) {
+// function validParentheses(parens) {
+//   let openParens = [];
+//   let closedParens = [];
+//
+//   if (parens[0] === ")" || parens[parens.length - 1] === "(") {
+//     return false;
+//   }
+//
+//   for (let i = 0; i < parens.length; i++) {
+//     if (parens[i] === "(") {
+//       openParens.push(parens[i]);
+//     } else {
+//       closedParens.push(parens[i]);
+//     }
+//   }
+//
+//   if (openParens.length === closedParens.length) {
+//     return true;
+//   }
+//   return false;
+// }
+
+// validParentheses("(())((()())())")
+
+//----------#10 END OF VALID PARENTHESIS------------------
+
+//----------#11 VALID BRACES------------------
+// Write a function called validBraces that takes a string of braces, and determines if the order of the braces is valid. validBraces should return true if the string is valid, and false if it's invalid.
+//
+// What is considered Valid? A string of braces is considered valid if all braces are matched with the correct brace.
+// Examples:
+// validBraces( "(){}[]" ) => returns true
+// validBraces( "(}" ) => returns false
+// validBraces( "[(])" ) => returns false
+// validBraces( "([{}])" ) => returns true
+// validBraces( "[({})](]" ) => return false
+
+function validBraces(braces) {
   let openParens = [];
   let closedParens = [];
+  let openCurlies = [];
+  let closedCurlies = [];
+  let openBrackets = [];
+  let closedBrackets = [];
 
-  if (parens[0] === ")" || parens[parens.length - 1] === "(") {
+  if (braces[0] === ")" || braces[0] === "}" || braces[0] === "]" || braces[braces.length - 1] === "(" || braces[braces.length - 1] === "{" || braces[braces.length - 1] === "[") {
+    console.log(false);
+    return true;
+  }
+  for (let i = 0; i < braces.length; i++) {
+    switch (braces[i]) {
+      case "(":
+        openParens.push(braces[i]);
+        break;
+      case ")":
+        closedParens.push(braces[i]);
+        break;
+      case "{":
+        openCurlies.push(braces[i]);
+        break;
+      case "}":
+        closedCurlies.push(braces[i]);
+        break;
+      case "[":
+        openBrackets.push(braces[i]);
+        break;
+      case "]":
+        closedBrackets.push(braces[i]);
+        break;
+      default:
+        console.log("Invalid character in location braces[" + braces[i] + "]");
+        return "Invalid character in location braces[" + braces[i] + "]";
+    }
+
+  }
+  console.log("Open Curlies", openCurlies);
+  console.log("Closed Curlies", closedCurlies);
+  console.log("Open Parens", openParens);
+  console.log("Closed Parens", closedParens);
+  console.log("Open Brackets", openBrackets);
+  console.log("Closed Brackets", closedBrackets);
+
+  if (openParens.length !== closedParens.length || openCurlies.length !== closedCurlies.length || openBrackets.length !== closedBrackets.length) {
+    console.log(false);
+    return false;
+  } else {
+    console.log(true);
+    return true;
+  }
+}
+// validBraces("[(])");
+
+function validBraces(braces) {
+  let openParens = [];
+  let closedParens = [];
+  let openCurlies = [];
+  let closedCurlies = [];
+  let openBrackets = [];
+  let closedBrackets = [];
+  let start;
+  let end;
+
+  if (braces[0] === ")" || braces[0] === "}" || braces[0] === "]" || braces[braces.length - 1] === "(" || braces[braces.length - 1] === "{" || braces[braces.length - 1] === "[") {
+    console.log(false);
     return false;
   }
 
-  for (let i = 0; i < parens.length; i++) {
-    if (parens[i] === "(") {
-      openParens.push(parens[i]);
-    } else {
-      closedParens.push(parens[i]);
+  for (let i = 0; i < braces.length; i++) {
+
+    switch (braces[i]) {
+      case "(":
+        openParens.push(braces[i]);
+        break;
+      case ")":
+        closedParens.push(braces[i]);
+        break;
+      case "{":
+        openCurlies.push(braces[i]);
+        break;
+      case "}":
+        closedCurlies.push(braces[i]);
+        break;
+      case "[":
+        openBrackets.push(braces[i]);
+        break;
+      case "]":
+        closedBrackets.push(braces[i]);
+        break;
+      default:
+        console.log("Invalid character in location braces[" + braces[i] + "]");
+        return "Invalid character in location braces[" + braces[i] + "]";
+    }
+
+    if (braces[i] === "[" && braces[i + 1] !== "]") {
+      start = braces.indexOf(braces[i + 1]);
+      end = braces.indexOf("]");
+      let arrayToCheck = braces.slice(start, end);
+      if (arrayToCheck.length % 2 !== 0) {
+        console.log(false);
+        return false;
+      } else {
+        checkBrackets(arrayToCheck);
+      }
+    } else if (braces[i] === "(" && braces[i + 1] !== ")") {
+      start = braces.indexOf(braces[i + 1]);
+      end = braces.indexOf(")");
+      let arrayToCheck = braces.slice(start, end);
+      if (arrayToCheck.length % 2 !== 0) {
+        console.log(false);
+        return false;
+      } else {
+        checkParens(arrayToCheck);
+      }
+    } else if (braces[i] === "{" && braces[i + 1] !== "}") {
+      start = braces.indexOf(braces[i + 1]);
+      end = braces.indexOf("}");
+      let arrayToCheck = braces.slice(start, end);
+      if (arrayToCheck.length % 2 !== 0) {
+        console.log(false);
+        return false;
+      } else {
+        checkCurlies(arrayToCheck);
+      }
+    }
+  }
+  if (openParens.length !== closedParens.length || openCurlies.length !== closedCurlies.length || openBrackets.length !== closedBrackets.length) {
+    console.log(false);
+    return false;
+  } else {
+    console.log(true);
+    return true;
+  }
+
+  function checkBrackets(array) {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] === "[" && array[i + 1] !== "]") {
+        start = array.indexOf(array[i + 1]);
+        end = array.indexOf("]");
+        let arrayToCheck = array.slice(start, end);
+        if (arrayToCheck.length % 2 !== 0) {
+          console.log(false);
+          return false;
+        }
+      }
     }
   }
 
-  if (openParens.length === closedParens.length) {
-    return true;
+  function checkParens(array) {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] === "(" && array[i + 1] !== ")") {
+        start = array.indexOf(array[i + 1]);
+        end = array.indexOf(")");
+        let arrayToCheck = array.slice(start, end);
+        if (arrayToCheck.length % 2 !== 0) {
+          console.log(false);
+          return false;
+        }
+      }
+    }
   }
-  return false;
-};
 
-validParentheses("(())((()())())")
+  function checkCurlies(array) {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] === "{" && array[i + 1] !== "}") {
+        start = array.indexOf(array[i + 1]);
+        end = array.indexOf("}");
+        let arrayToCheck = array.slice(start, end);
+        if (arrayToCheck.length % 2 !== 0) {
+          console.log(false);
+          return false;
+        }
+      }
+    }
+  }
+}
+// validBraces("([{}])");
 
-//----------#10 END OF VALID PARENTHESIS------------------
+//----------#11 END OF VALID BRACES------------------
