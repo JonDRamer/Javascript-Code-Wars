@@ -613,6 +613,43 @@ function validBraces(braces) {
 //   return largest;
 // }
 // solution(1234567898765);
-
-
+// OPTIMIZED solution
+// function solution(digits){
+//   var max = 0;
+//   for(var i = 0; i <= digits.length - 5; i++)
+//     max = Math.max(+digits.slice(i, i + 5), max);
+//   return max;
+// }
 //----------#13 END OF LARGEST 5 DIGIT SUM IN A SERIES-----------
+
+//----------#14 Convert string to camel case---------------------
+// Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized.
+// returns "theStealthWarrior"
+// toCamelCase("the-stealth-warrior")
+// returns "TheStealthWarrior"
+// toCamelCase("The_Stealth_Warrior")
+
+function toCamelCase(str) {
+  let strArray = str.split('');
+  if (str === '') {
+    return str;
+  }
+  for (let i = 0; i < strArray.length; i++) {
+    let dash = strArray.indexOf("-");
+    let underScore = strArray.indexOf("_");
+    if (dash !== -1) {
+      let indexToCapitalize = dash + 1;
+      strArray[indexToCapitalize] = strArray[indexToCapitalize].toUpperCase();
+      strArray.splice(dash, 1);
+    } else if (underScore !== -1) {
+      indexToCapitalize = underScore + 1;
+      strArray[indexToCapitalize] = strArray[indexToCapitalize].toUpperCase();
+      strArray.splice(underScore, 1);
+    }
+  }
+  return strArray.join("");
+}
+toCamelCase("The_Stealth_Warrior");
+
+
+//----------#14 END OF Convert string to camel case---------------------
