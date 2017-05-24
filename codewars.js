@@ -567,3 +567,19 @@ function validBraces(braces) {
 // validBraces("([{}])");
 
 //----------#11 END OF VALID BRACES------------------
+
+//----------#12 Moving Zeros to The End------------------
+//Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
+function moveZeros(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 0) {
+      let start = arr.indexOf(0);
+      let spliced = arr.splice(start, 1);
+      arr.push(parseInt(spliced.toString()));
+    }
+  }
+  return arr;
+}
+moveZeros([false, 1, 0, 1, 2, 0, 1, 3, "a"]);
+
+//----------#12 End of Moving Zeros to The End------------------
