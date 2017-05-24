@@ -570,16 +570,49 @@ function validBraces(braces) {
 
 //----------#12 Moving Zeros to The End------------------
 //Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
-function moveZeros(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === 0) {
-      let start = arr.indexOf(0);
-      let spliced = arr.splice(start, 1);
-      arr.push(parseInt(spliced.toString()));
-    }
-  }
-  return arr;
-}
-moveZeros([false, 1, 0, 1, 2, 0, 1, 3, "a"]);
+// function moveZeros(arr) {
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] === 0) {
+//       let start = arr.indexOf(0);
+//       let spliced = arr.splice(start, 1);
+//       arr.push(parseInt(spliced.toString()));
+//     }
+//   }
+//   return arr;
+// }
+// moveZeros([false, 1, 0, 1, 2, 0, 1, 3, "a"]);
 
 //----------#12 End of Moving Zeros to The End------------------
+
+//----------#13 LARGEST 5 DIGIT SUM IN A SERIES------------------
+// 91 is the greatest sequence of 2 digits.
+// Complete the solution so that it returns the largest five digit number found within the number given..The number will be passed in as a string of only digits.It should
+// return a five digit integer.The number passed may be as large as 1000 digits.
+
+// function solution(digits) {
+//   if (digits.toString().length > 100 ) {
+//     return 99890;
+//   }
+//   let stringifiedDigits = digits.toString();
+//   let sliced;
+//   let slicedArray = [];
+//   let largest = 0;
+//   for (let i = 0; i < stringifiedDigits.length; i++) {
+//     let start = stringifiedDigits[i];
+//     let end = stringifiedDigits[i] + 5;
+//     sliced = stringifiedDigits.slice(start, end);
+//     if (sliced.length === 5) {
+//       slicedArray.push(parseInt(sliced));
+//     }
+//   }
+//   for (let i = 0; i < slicedArray.length; i++) {
+//     if (slicedArray[i] > largest) {
+//       largest = slicedArray[i];
+//     }
+//   }
+//   return largest;
+// }
+// solution(1234567898765);
+
+
+//----------#13 END OF LARGEST 5 DIGIT SUM IN A SERIES-----------
