@@ -629,27 +629,36 @@ function validBraces(braces) {
 // returns "TheStealthWarrior"
 // toCamelCase("The_Stealth_Warrior")
 
-function toCamelCase(str) {
-  let strArray = str.split('');
-  if (str === '') {
-    return str;
-  }
-  for (let i = 0; i < strArray.length; i++) {
-    let dash = strArray.indexOf("-");
-    let underScore = strArray.indexOf("_");
-    if (dash !== -1) {
-      let indexToCapitalize = dash + 1;
-      strArray[indexToCapitalize] = strArray[indexToCapitalize].toUpperCase();
-      strArray.splice(dash, 1);
-    } else if (underScore !== -1) {
-      indexToCapitalize = underScore + 1;
-      strArray[indexToCapitalize] = strArray[indexToCapitalize].toUpperCase();
-      strArray.splice(underScore, 1);
-    }
-  }
-  return strArray.join("");
-}
-toCamelCase("The_Stealth_Warrior");
+// function toCamelCase(str) {
+//   let strArray = str.split('');
+//   if (str === '') {
+//     return str;
+//   }
+//   for (let i = 0; i < strArray.length; i++) {
+//     let dash = strArray.indexOf("-");
+//     let underScore = strArray.indexOf("_");
+//     if (dash !== -1) {
+//       let indexToCapitalize = dash + 1;
+//       strArray[indexToCapitalize] = strArray[indexToCapitalize].toUpperCase();
+//       strArray.splice(dash, 1);
+//     } else if (underScore !== -1) {
+//       indexToCapitalize = underScore + 1;
+//       strArray[indexToCapitalize] = strArray[indexToCapitalize].toUpperCase();
+//       strArray.splice(underScore, 1);
+//     }
+//   }
+//   return strArray.join("");
+// }
+// toCamelCase("The_Stealth_Warrior");
 
 
 //----------#14 END OF Convert string to camel case---------------------
+
+//----------#15 Directions Reduction ---------------------
+function dirReduc(arr){
+  // ...
+}
+dirReduc(["North", "South"]);
+
+
+//----------#15 END OF Directions Reduction ---------------------
