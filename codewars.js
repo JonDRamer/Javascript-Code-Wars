@@ -656,14 +656,14 @@ function validBraces(braces) {
 
 //----------#15 Directions Reduction ---------------------
 function dirReduc(arr){
-  console.log("Original Array", arr);
   let i = 0;
   myLoop(arr);
   function myLoop(arr) {
     let curr = arr[i];
     let next = arr[i + 1];
     if (curr === "NORTH" && next === "SOUTH" || curr === "SOUTH" && next === "NORTH" || curr === "EAST" && next === "WEST" || curr === "WEST" && next === "EAST") {
-      arr.splice(curr, 2);
+      arr.splice(i, 2);
+      i = 0;
       myLoop(arr)
     } else {
       i += 1;
@@ -672,10 +672,9 @@ function dirReduc(arr){
       }
     }
   }
-  console.log("Reduced Array", arr);
   return arr;
 }
-dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]);
+dirReduc(["SOUTH", "EAST", "WEST", "NORTH", "WEST"]);
 
 
 //----------#15 END OF Directions Reduction ---------------------
