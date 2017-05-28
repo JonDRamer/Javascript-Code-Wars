@@ -656,7 +656,19 @@ function validBraces(braces) {
 
 //----------#15 Directions Reduction ---------------------
 function dirReduc(arr){
-  // ...
+  //Loop through the array
+  for (let i = 0; i < arr.length; i++) {
+    let first = arr[i];
+    let second = arr[i + 1];
+    //Check to see if neighbouring indexes oppose each other
+    if (first === "North" && second === "South" || first === "South" && second === "North") {
+      arr.splice(first, 2)
+    }
+  }
+  //After removing the indexes loop through the array again to check if there
+  //are opposing pairs among the remaining elements
+  //When there are no more opposing pairs return the array.
+  console.log(arr);
 }
 dirReduc(["North", "South"]);
 
