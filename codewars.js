@@ -386,184 +386,184 @@
 // validBraces( "([{}])" ) => returns true
 // validBraces( "[({})](]" ) => return false
 
-function validBraces(braces) {
-  let openParens = [];
-  let closedParens = [];
-  let openCurlies = [];
-  let closedCurlies = [];
-  let openBrackets = [];
-  let closedBrackets = [];
-
-  if (braces[0] === ")" || braces[0] === "}" || braces[0] === "]" || braces[braces.length - 1] === "(" || braces[braces.length - 1] === "{" || braces[braces.length - 1] === "[") {
-    console.log(false);
-    return true;
-  }
-  for (let i = 0; i < braces.length; i++) {
-    switch (braces[i]) {
-      case "(":
-        openParens.push(braces[i]);
-        break;
-      case ")":
-        closedParens.push(braces[i]);
-        break;
-      case "{":
-        openCurlies.push(braces[i]);
-        break;
-      case "}":
-        closedCurlies.push(braces[i]);
-        break;
-      case "[":
-        openBrackets.push(braces[i]);
-        break;
-      case "]":
-        closedBrackets.push(braces[i]);
-        break;
-      default:
-        console.log("Invalid character in location braces[" + braces[i] + "]");
-        return "Invalid character in location braces[" + braces[i] + "]";
-    }
-
-  }
-  console.log("Open Curlies", openCurlies);
-  console.log("Closed Curlies", closedCurlies);
-  console.log("Open Parens", openParens);
-  console.log("Closed Parens", closedParens);
-  console.log("Open Brackets", openBrackets);
-  console.log("Closed Brackets", closedBrackets);
-
-  if (openParens.length !== closedParens.length || openCurlies.length !== closedCurlies.length || openBrackets.length !== closedBrackets.length) {
-    console.log(false);
-    return false;
-  } else {
-    console.log(true);
-    return true;
-  }
-}
+// function validBraces(braces) {
+//   let openParens = [];
+//   let closedParens = [];
+//   let openCurlies = [];
+//   let closedCurlies = [];
+//   let openBrackets = [];
+//   let closedBrackets = [];
+//
+//   if (braces[0] === ")" || braces[0] === "}" || braces[0] === "]" || braces[braces.length - 1] === "(" || braces[braces.length - 1] === "{" || braces[braces.length - 1] === "[") {
+//     console.log(false);
+//     return true;
+//   }
+//   for (let i = 0; i < braces.length; i++) {
+//     switch (braces[i]) {
+//       case "(":
+//         openParens.push(braces[i]);
+//         break;
+//       case ")":
+//         closedParens.push(braces[i]);
+//         break;
+//       case "{":
+//         openCurlies.push(braces[i]);
+//         break;
+//       case "}":
+//         closedCurlies.push(braces[i]);
+//         break;
+//       case "[":
+//         openBrackets.push(braces[i]);
+//         break;
+//       case "]":
+//         closedBrackets.push(braces[i]);
+//         break;
+//       default:
+//         console.log("Invalid character in location braces[" + braces[i] + "]");
+//         return "Invalid character in location braces[" + braces[i] + "]";
+//     }
+//
+//   }
+//   console.log("Open Curlies", openCurlies);
+//   console.log("Closed Curlies", closedCurlies);
+//   console.log("Open Parens", openParens);
+//   console.log("Closed Parens", closedParens);
+//   console.log("Open Brackets", openBrackets);
+//   console.log("Closed Brackets", closedBrackets);
+//
+//   if (openParens.length !== closedParens.length || openCurlies.length !== closedCurlies.length || openBrackets.length !== closedBrackets.length) {
+//     console.log(false);
+//     return false;
+//   } else {
+//     console.log(true);
+//     return true;
+//   }
+// }
 // validBraces("[(])");
 
-function validBraces(braces) {
-  let openParens = [];
-  let closedParens = [];
-  let openCurlies = [];
-  let closedCurlies = [];
-  let openBrackets = [];
-  let closedBrackets = [];
-  let start;
-  let end;
-
-  if (braces[0] === ")" || braces[0] === "}" || braces[0] === "]" || braces[braces.length - 1] === "(" || braces[braces.length - 1] === "{" || braces[braces.length - 1] === "[") {
-    console.log(false);
-    return false;
-  }
-
-  for (let i = 0; i < braces.length; i++) {
-
-    switch (braces[i]) {
-      case "(":
-        openParens.push(braces[i]);
-        break;
-      case ")":
-        closedParens.push(braces[i]);
-        break;
-      case "{":
-        openCurlies.push(braces[i]);
-        break;
-      case "}":
-        closedCurlies.push(braces[i]);
-        break;
-      case "[":
-        openBrackets.push(braces[i]);
-        break;
-      case "]":
-        closedBrackets.push(braces[i]);
-        break;
-      default:
-        console.log("Invalid character in location braces[" + braces[i] + "]");
-        return "Invalid character in location braces[" + braces[i] + "]";
-    }
-
-    if (braces[i] === "[" && braces[i + 1] !== "]") {
-      start = braces.indexOf(braces[i + 1]);
-      end = braces.indexOf("]");
-      let arrayToCheck = braces.slice(start, end);
-      if (arrayToCheck.length % 2 !== 0) {
-        console.log(false);
-        return false;
-      } else {
-        checkBrackets(arrayToCheck);
-      }
-    } else if (braces[i] === "(" && braces[i + 1] !== ")") {
-      start = braces.indexOf(braces[i + 1]);
-      end = braces.indexOf(")");
-      let arrayToCheck = braces.slice(start, end);
-      if (arrayToCheck.length % 2 !== 0) {
-        console.log(false);
-        return false;
-      } else {
-        checkParens(arrayToCheck);
-      }
-    } else if (braces[i] === "{" && braces[i + 1] !== "}") {
-      start = braces.indexOf(braces[i + 1]);
-      end = braces.indexOf("}");
-      let arrayToCheck = braces.slice(start, end);
-      if (arrayToCheck.length % 2 !== 0) {
-        console.log(false);
-        return false;
-      } else {
-        checkCurlies(arrayToCheck);
-      }
-    }
-  }
-  if (openParens.length !== closedParens.length || openCurlies.length !== closedCurlies.length || openBrackets.length !== closedBrackets.length) {
-    console.log(false);
-    return false;
-  } else {
-    console.log(true);
-    return true;
-  }
-
-  function checkBrackets(array) {
-    for (let i = 0; i < array.length; i++) {
-      if (array[i] === "[" && array[i + 1] !== "]") {
-        start = array.indexOf(array[i + 1]);
-        end = array.indexOf("]");
-        let arrayToCheck = array.slice(start, end);
-        if (arrayToCheck.length % 2 !== 0) {
-          console.log(false);
-          return false;
-        }
-      }
-    }
-  }
-
-  function checkParens(array) {
-    for (let i = 0; i < array.length; i++) {
-      if (array[i] === "(" && array[i + 1] !== ")") {
-        start = array.indexOf(array[i + 1]);
-        end = array.indexOf(")");
-        let arrayToCheck = array.slice(start, end);
-        if (arrayToCheck.length % 2 !== 0) {
-          console.log(false);
-          return false;
-        }
-      }
-    }
-  }
-
-  function checkCurlies(array) {
-    for (let i = 0; i < array.length; i++) {
-      if (array[i] === "{" && array[i + 1] !== "}") {
-        start = array.indexOf(array[i + 1]);
-        end = array.indexOf("}");
-        let arrayToCheck = array.slice(start, end);
-        if (arrayToCheck.length % 2 !== 0) {
-          console.log(false);
-          return false;
-        }
-      }
-    }
-  }
-}
+// function validBraces(braces) {
+//   let openParens = [];
+//   let closedParens = [];
+//   let openCurlies = [];
+//   let closedCurlies = [];
+//   let openBrackets = [];
+//   let closedBrackets = [];
+//   let start;
+//   let end;
+//
+//   if (braces[0] === ")" || braces[0] === "}" || braces[0] === "]" || braces[braces.length - 1] === "(" || braces[braces.length - 1] === "{" || braces[braces.length - 1] === "[") {
+//     console.log(false);
+//     return false;
+//   }
+//
+//   for (let i = 0; i < braces.length; i++) {
+//
+//     switch (braces[i]) {
+//       case "(":
+//         openParens.push(braces[i]);
+//         break;
+//       case ")":
+//         closedParens.push(braces[i]);
+//         break;
+//       case "{":
+//         openCurlies.push(braces[i]);
+//         break;
+//       case "}":
+//         closedCurlies.push(braces[i]);
+//         break;
+//       case "[":
+//         openBrackets.push(braces[i]);
+//         break;
+//       case "]":
+//         closedBrackets.push(braces[i]);
+//         break;
+//       default:
+//         console.log("Invalid character in location braces[" + braces[i] + "]");
+//         return "Invalid character in location braces[" + braces[i] + "]";
+//     }
+//
+//     if (braces[i] === "[" && braces[i + 1] !== "]") {
+//       start = braces.indexOf(braces[i + 1]);
+//       end = braces.indexOf("]");
+//       let arrayToCheck = braces.slice(start, end);
+//       if (arrayToCheck.length % 2 !== 0) {
+//         console.log(false);
+//         return false;
+//       } else {
+//         checkBrackets(arrayToCheck);
+//       }
+//     } else if (braces[i] === "(" && braces[i + 1] !== ")") {
+//       start = braces.indexOf(braces[i + 1]);
+//       end = braces.indexOf(")");
+//       let arrayToCheck = braces.slice(start, end);
+//       if (arrayToCheck.length % 2 !== 0) {
+//         console.log(false);
+//         return false;
+//       } else {
+//         checkParens(arrayToCheck);
+//       }
+//     } else if (braces[i] === "{" && braces[i + 1] !== "}") {
+//       start = braces.indexOf(braces[i + 1]);
+//       end = braces.indexOf("}");
+//       let arrayToCheck = braces.slice(start, end);
+//       if (arrayToCheck.length % 2 !== 0) {
+//         console.log(false);
+//         return false;
+//       } else {
+//         checkCurlies(arrayToCheck);
+//       }
+//     }
+//   }
+//   if (openParens.length !== closedParens.length || openCurlies.length !== closedCurlies.length || openBrackets.length !== closedBrackets.length) {
+//     console.log(false);
+//     return false;
+//   } else {
+//     console.log(true);
+//     return true;
+//   }
+//
+//   function checkBrackets(array) {
+//     for (let i = 0; i < array.length; i++) {
+//       if (array[i] === "[" && array[i + 1] !== "]") {
+//         start = array.indexOf(array[i + 1]);
+//         end = array.indexOf("]");
+//         let arrayToCheck = array.slice(start, end);
+//         if (arrayToCheck.length % 2 !== 0) {
+//           console.log(false);
+//           return false;
+//         }
+//       }
+//     }
+//   }
+//
+//   function checkParens(array) {
+//     for (let i = 0; i < array.length; i++) {
+//       if (array[i] === "(" && array[i + 1] !== ")") {
+//         start = array.indexOf(array[i + 1]);
+//         end = array.indexOf(")");
+//         let arrayToCheck = array.slice(start, end);
+//         if (arrayToCheck.length % 2 !== 0) {
+//           console.log(false);
+//           return false;
+//         }
+//       }
+//     }
+//   }
+//
+//   function checkCurlies(array) {
+//     for (let i = 0; i < array.length; i++) {
+//       if (array[i] === "{" && array[i + 1] !== "}") {
+//         start = array.indexOf(array[i + 1]);
+//         end = array.indexOf("}");
+//         let arrayToCheck = array.slice(start, end);
+//         if (arrayToCheck.length % 2 !== 0) {
+//           console.log(false);
+//           return false;
+//         }
+//       }
+//     }
+//   }
+// }
 // validBraces("([{}])");
 
 //----------#11 END OF VALID BRACES------------------
@@ -655,126 +655,136 @@ function validBraces(braces) {
 //----------#14 END OF Convert string to camel case---------------------
 
 //----------#15 Directions Reduction ---------------------
-function dirReduc(arr){
-  let i = 0;
-  myLoop(arr);
-  function myLoop(arr) {
-    let curr = arr[i];
-    let next = arr[i + 1];
-    if (curr === "NORTH" && next === "SOUTH" || curr === "SOUTH" && next === "NORTH" || curr === "EAST" && next === "WEST" || curr === "WEST" && next === "EAST") {
-      arr.splice(i, 2);
-      i = 0;
-      myLoop(arr)
-    } else {
-      i += 1;
-      if (i < arr.length) {
-        myLoop(arr);
-      }
-    }
-  }
-  return arr;
-}
-dirReduc(["SOUTH", "EAST", "WEST", "NORTH", "WEST"]);
+// function dirReduc(arr){
+//   let i = 0;
+//   myLoop(arr);
+//   function myLoop(arr) {
+//     let curr = arr[i];
+//     let next = arr[i + 1];
+//     if (curr === "NORTH" && next === "SOUTH" || curr === "SOUTH" && next === "NORTH" || curr === "EAST" && next === "WEST" || curr === "WEST" && next === "EAST") {
+//       arr.splice(i, 2);
+//       i = 0;
+//       myLoop(arr)
+//     } else {
+//       i += 1;
+//       if (i < arr.length) {
+//         myLoop(arr);
+//       }
+//     }
+//   }
+//   return arr;
+// }
+// dirReduc(["SOUTH", "EAST", "WEST", "NORTH", "WEST"]);
 
 
 //----------#15 END OF Directions Reduction ---------------------
 
 //----------#16 Calculating with Functions ---------------------
 
-function zero(string) {
-  if (string) {
-    console.log(eval(0 + string));
-    return eval(0 + string);
-  } else {
-    return "0";
-  }
-}
-function one(string) {
-  if (string) {
-    console.log(eval(1 + string));
-    return eval(1 + string);
-  } else {
-    return "1";
-  }
-}
-function two(string) {
-  if (string) {
-    console.log(eval(2 + string));
-    return eval(2 + string);
-  } else {
-    return "2";
-  }
-}
-function three(string) {
-  if (string) {
-    console.log(eval(3 + string));
-    return eval(3 + string);
-  } else {
-    return "3";
-  }
-}
-function four(string) {
-  if (string) {
-    console.log(eval(4 + string));
-    return eval(4 + string);
-  } else {
-    return 4;
-  }
-}
-function five(string) {
-  if (string) {
-    console.log(eval(5 + string));
-    return eval(5 + string);
-  } else {
-    return "5";
-  }
-}
-function six(string) {
-  if (string) {
-    console.log(eval(6 + string));
-    return eval(6 + string);
-  } else {
-    return "6";
-  }
-}
-function seven(string) {
-  if (string) {
-    console.log(eval(7 + string));
-    return eval(7 + string);
-  } else {
-    return "7";
-  }
-}
-function eight(string) {
-  if (string) {
-    console.log(eval(8 + string));
-    return eval(8 + string);
-  } else {
-    return 8;
-  }
-}
-function nine(string) {
-  if (string) {
-    console.log(eval(9 + string));
-    return eval(9 + string);
-  } else {
-    return "9";
-  }
-}
-
-function plus(string) {
-  return '+' + string;
-}
-function minus(string) {
-  return '-' + string;
-}
-function times(string) {
-  return '*' + string;
-}
-function dividedBy(string) {
-  return '/' + string;
-}
-
-seven(plus(zero()));
+// function zero(string) {
+//   if (string) {
+//     console.log(eval(0 + string));
+//     return eval(0 + string);
+//   } else {
+//     return "0";
+//   }
+// }
+// function one(string) {
+//   if (string) {
+//     console.log(eval(1 + string));
+//     return eval(1 + string);
+//   } else {
+//     return "1";
+//   }
+// }
+// function two(string) {
+//   if (string) {
+//     console.log(eval(2 + string));
+//     return eval(2 + string);
+//   } else {
+//     return "2";
+//   }
+// }
+// function three(string) {
+//   if (string) {
+//     console.log(eval(3 + string));
+//     return eval(3 + string);
+//   } else {
+//     return "3";
+//   }
+// }
+// function four(string) {
+//   if (string) {
+//     console.log(eval(4 + string));
+//     return eval(4 + string);
+//   } else {
+//     return 4;
+//   }
+// }
+// function five(string) {
+//   if (string) {
+//     console.log(eval(5 + string));
+//     return eval(5 + string);
+//   } else {
+//     return "5";
+//   }
+// }
+// function six(string) {
+//   if (string) {
+//     console.log(eval(6 + string));
+//     return eval(6 + string);
+//   } else {
+//     return "6";
+//   }
+// }
+// function seven(string) {
+//   if (string) {
+//     console.log(eval(7 + string));
+//     return eval(7 + string);
+//   } else {
+//     return "7";
+//   }
+// }
+// function eight(string) {
+//   if (string) {
+//     console.log(eval(8 + string));
+//     return eval(8 + string);
+//   } else {
+//     return 8;
+//   }
+// }
+// function nine(string) {
+//   if (string) {
+//     console.log(eval(9 + string));
+//     return eval(9 + string);
+//   } else {
+//     return "9";
+//   }
+// }
+//
+// function plus(string) {
+//   return '+' + string;
+// }
+// function minus(string) {
+//   return '-' + string;
+// }
+// function times(string) {
+//   return '*' + string;
+// }
+// function dividedBy(string) {
+//   return '/' + string;
+// }
+//
+// seven(plus(zero()));
 
 //----------#16 END OF Calculating with Functions ---------------------
+
+//----------#17 ARRAY_DIFF ---------------------
+function array_diff(a, b) {
+  console.log(a.splice(a.indexOf(b), 1));
+  return a.splice(a.indexOf(b), 1);
+
+}
+array_diff([1,2], [1])
+
+//----------#17 END OF ARRAY_DIFF ---------------------
