@@ -678,3 +678,103 @@ dirReduc(["SOUTH", "EAST", "WEST", "NORTH", "WEST"]);
 
 
 //----------#15 END OF Directions Reduction ---------------------
+
+//----------#16 Calculating with Functions ---------------------
+
+function zero(string) {
+  if (string) {
+    console.log(eval(0 + string));
+    return eval(0 + string);
+  } else {
+    return "0";
+  }
+}
+function one(string) {
+  if (string) {
+    console.log(eval(1 + string));
+    return eval(1 + string);
+  } else {
+    return "1";
+  }
+}
+function two(string) {
+  if (string) {
+    console.log(eval(2 + string));
+    return eval(2 + string);
+  } else {
+    return "2";
+  }
+}
+function three(string) {
+  if (string) {
+    console.log(eval(3 + string));
+    return eval(3 + string);
+  } else {
+    return "3";
+  }
+}
+function four(string) {
+  if (string) {
+    console.log(eval(4 + string));
+    return eval(4 + string);
+  } else {
+    return 4;
+  }
+}
+function five(string) {
+  if (string) {
+    console.log(eval(5 + string));
+    return eval(5 + string);
+  } else {
+    return "5";
+  }
+}
+function six(string) {
+  if (string) {
+    console.log(eval(6 + string));
+    return eval(6 + string);
+  } else {
+    return "6";
+  }
+}
+function seven(string) {
+  if (string) {
+    console.log(eval(7 + string));
+    return eval(7 + string);
+  } else {
+    return "7";
+  }
+}
+function eight(string) {
+  if (string) {
+    console.log(eval(8 + string));
+    return eval(8 + string);
+  } else {
+    return 8;
+  }
+}
+function nine(string) {
+  if (string) {
+    console.log(eval(9 + string));
+    return eval(9 + string);
+  } else {
+    return "9";
+  }
+}
+
+function plus(string) {
+  return '+' + string;
+}
+function minus(string) {
+  return '-' + string;
+}
+function times(string) {
+  return '*' + string;
+}
+function dividedBy(string) {
+  return '/' + string;
+}
+
+seven(plus(zero()));
+
+//----------#16 END OF Calculating with Functions ---------------------
