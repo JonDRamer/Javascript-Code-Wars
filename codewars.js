@@ -781,10 +781,19 @@
 
 //----------#17 ARRAY_DIFF ---------------------
 function array_diff(a, b) {
-  console.log(a.splice(a.indexOf(b), 1));
-  return a.splice(a.indexOf(b), 1);
+  if (a.indexOf(b[0]) !== -1) {
+    findDiff(a,b);
+  } else {
+    console.log(a);
+    return a;
+  }
 
+  function findDiff(a,b) {
+      let indexToRemove = a.indexOf(b[0]);
+      a.splice(indexToRemove, 1);
+      array_diff(a,b);
+  }
 }
-array_diff([1,2], [1])
+array_diff([1,2,2,2,3],[2])
 
 //----------#17 END OF ARRAY_DIFF ---------------------
