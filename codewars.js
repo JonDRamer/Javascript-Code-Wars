@@ -784,7 +784,7 @@ function array_diff(a, b) {
   if (a.indexOf(b[0]) !== -1) {
     findDiff(a,b);
   } else {
-    console.log(a);
+    // console.log(a);
     return a;
   }
 
