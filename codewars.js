@@ -780,20 +780,42 @@
 //----------#16 END OF Calculating with Functions ---------------------
 
 //----------#17 ARRAY_DIFF ---------------------
-function array_diff(a, b) {
-  if (a.indexOf(b[0]) !== -1) {
-    findDiff(a,b);
-  } else {
-    // console.log(a);
-    return a;
-  }
-
-  function findDiff(a,b) {
-      let indexToRemove = a.indexOf(b[0]);
-      a.splice(indexToRemove, 1);
-      array_diff(a,b);
-  }
-}
-array_diff([1,2,2,2,3],[2])
+// function array_diff(a, b) {
+//   if (a.indexOf(b[0]) !== -1) {
+//     findDiff(a,b);
+//   } else {
+//     // console.log(a);
+//     return a;
+//   }
+//
+//   function findDiff(a,b) {
+//       let indexToRemove = a.indexOf(b[0]);
+//       a.splice(indexToRemove, 1);
+//       array_diff(a,b);
+//   }
+// }
+// array_diff([1,2,2,2,3],[2])
 
 //----------#17 END OF ARRAY_DIFF ---------------------
+
+//----------#18 FIND THE DIVISORS ---------------------
+// #divisors(12); //should return [2,3,4,6]
+// divisors(25); //should return [5]
+// divisors(13); //should return "13 is prime"
+
+function divisors(integer) {
+  let divisorArray = [];
+    for (let i = 2; i < integer; i++) {
+      if (integer % i === 0) {
+        divisorArray.push(i);
+      }
+    }
+    if (divisorArray.length === 0) {
+      return integer + " is prime";
+    } else {
+      return divisorArray;
+    }
+};
+divisors(13);
+
+//----------#18 END OF FIND THE DIVISORS ---------------------
