@@ -803,19 +803,49 @@
 // divisors(25); //should return [5]
 // divisors(13); //should return "13 is prime"
 
-function divisors(integer) {
-  let divisorArray = [];
-    for (let i = 2; i < integer; i++) {
-      if (integer % i === 0) {
-        divisorArray.push(i);
-      }
-    }
-    if (divisorArray.length === 0) {
-      return integer + " is prime";
-    } else {
-      return divisorArray;
-    }
-};
-divisors(13);
+// function divisors(integer) {
+//   let divisorArray = [];
+//     for (let i = 2; i < integer; i++) {
+//       if (integer % i === 0) {
+//         divisorArray.push(i);
+//       }
+//     }
+//     if (divisorArray.length === 0) {
+//       return integer + " is prime";
+//     } else {
+//       return divisorArray;
+//     }
+// };
+// divisors(13);
 
 //----------#18 END OF FIND THE DIVISORS ---------------------
+
+//----------#19 RGB to HEX Converter ----------------------------
+
+function rgb(r, g, b){
+  let redHex = r.toString(16);
+  console.log(redHex);
+  let greenHex = g.toString(16);
+  console.log(greenHex);
+  let blueHex = b.toString(16);
+  console.log(blueHex);
+}
+rgb(255, 255, 255);//returns FFFFFF
+// rgb(255, 255, 300) // returns FFFFFF
+// rgb(0,0,0) // returns 000000
+// rgb(148, 0, 211) // returns 9400D3
+//
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+    console.log("#" + componentToHex(r).toUpperCase() + componentToHex(g).toUpperCase() + componentToHex(b).toUpperCase());
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
+//rgbToHex(148, 0, 211); // #0033ff
+
+
+//----------#19 END OF RGB to HEX Converter ---------------------
