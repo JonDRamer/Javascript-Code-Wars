@@ -822,30 +822,30 @@
 
 //----------#19 RGB to HEX Converter ----------------------------
 
-function rgb(r, g, b){
-  let redHex = r.toString(16);
-  console.log(redHex);
-  let greenHex = g.toString(16);
-  console.log(greenHex);
-  let blueHex = b.toString(16);
-  console.log(blueHex);
-}
-rgb(255, 255, 255);//returns FFFFFF
-// rgb(255, 255, 300) // returns FFFFFF
-// rgb(0,0,0) // returns 000000
-// rgb(148, 0, 211) // returns 9400D3
+// function rgb(r, g, b) {
+//   console.log(`${valuetoHex(r)}${valuetoHex(g)}${valuetoHex(b)}`);
+//   return `${valuetoHex(r)}${valuetoHex(g)}${valuetoHex(b)}`;
+// }
 //
-function componentToHex(c) {
-    var hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
-}
-
-function rgbToHex(r, g, b) {
-    console.log("#" + componentToHex(r).toUpperCase() + componentToHex(g).toUpperCase() + componentToHex(b).toUpperCase());
-    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-}
-
-//rgbToHex(148, 0, 211); // #0033ff
-
+// function valuetoHex(rgbValue) {
+//   if (rgbValue > 255) {
+//     rgbValue = 255;
+//     let hex = rgbValue.toString(16);
+//     return hex.length === 1 ? `0${hex}` : hex.toUpperCase();
+//   } else if (rgbValue < 0) {
+//     rgbValue = 0;
+//     let hex = rgbValue.toString(16);
+//     return hex.length === 1 ? `0${hex}` : hex.toUpperCase();
+//   } else {
+//     let hex = rgbValue.toString(16);
+//     return hex.length === 1 ? `0${hex}` : hex.toUpperCase();
+//   }
+// }
+//OPTIMIZED SOLUTION
+// function rgb(r, g, b){
+//   return [r,g,b].map(function(x) {
+//     return ('0'+Math.max(0, Math.min(255, x)).toString(16)).slice(-2);
+//   }).join('').toUpperCase();
+// }
 
 //----------#19 END OF RGB to HEX Converter ---------------------
