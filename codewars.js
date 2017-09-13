@@ -852,55 +852,50 @@
 
 //----------#20 Where My Anagrams at ----------------------------
 //What is an anagram? Well, two words are anagrams of each other
-//if they both contain the same letters. For example:
-
-//'abba' & 'baab' == true
-//'abba' & 'bbaa' == true
-//'abba' & 'abbba' == false
+//if they both contain the same letters.
 
 //Write a function that will find all the anagrams of a word from a list.
 //You will be given two inputs a word and an array with words.
 //You should return an array of all the anagrams or an empty array if
-//there are none. For example:
+//there are none.
 
-//anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']) => ['aabb', 'bbaa']
-//anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']) => ['carer', 'racer']
-//anagrams('laser', ['lazing', 'lazy',  'lacer']) => []
-function sortString(string) {
-  let sortedString = string.split('').sort().join(',');
-  return sortedString;
-}
-
-function compareStrings(str1, str2) {
-  let anagram = true;
-  if (str1.length === str2.length) {
-    for (let i = 0; i < str1.length; i++) {
-      if (str1[i] !== str2[i]) {
-        anagram = false;
-        console.log(anagram);
-        return anagram;
-      }
-    }
-  } else {
-    anagram = false;
-  }
-  console.log(anagram);
-  return anagram
-}
-compareStrings("test", "test");
-
+// function sortString(string) {
+//   let sortedString = string.split('').sort().join(',');
+//   return sortedString;
+// }
+//
+// function compareStrings(str1, str2) {
+//   let anagram = true;
+//   if (str1.length === str2.length) {
+//     for (let i = 0; i < str1.length; i++) {
+//       if (str1[i] !== str2[i]) {
+//         anagram = false;
+//         return anagram;
+//       }
+//     }
+//   } else {
+//     anagram = false;
+//   }
+//   return anagram
+// }
+//
 // function anagrams(str, arr) {
 //   let anagramString = sortString(str);
-//   console.log(anagramString);
+//   let matches = [];
 //   for (let i = 0; i < arr.length; i++) {
 //       let stringToCheck = sortString(arr[i]);
+//       if (compareStrings(anagramString, stringToCheck)) {
+//         matches.push(arr[i])
+//       }
 //   }
-//
-//   //loop through the new array comparing each string with the sorted input string
-//   //if the two strings are a match push them into a new array
-//   //when the loop finishes return the array
-//   //if there are no matches return an empty array
+//   return matches;
 // }
 // anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']); // => ['aabb', 'bbaa']
+
+//------------OPTIMIZED SOLUTION---------------------------------
+// function anagrams(word, words) {
+//   word = word.split('').sort().join('');
+//   return words.filter(function(v) {return word == v.split('').sort().join('');});
+// }
 
 //----------#20 END OF Where My Anagrams at ---------------------
