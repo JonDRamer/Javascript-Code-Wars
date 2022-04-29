@@ -1,33 +1,18 @@
 function validSolution(sudokuArray) {
-  let validSolution = true
-
-  // Check for zeros
-  validSolution = findZeros(sudokuArray)
-  if (!validSolution) {
-    return validSolution
+  // Check rows
+  if (!validateArrayGroup(sudokuArray)) {
+    return false
   }
 
-  validSolution = validateArrayGroup(sudokuArray)
-  if (!validSolution) {
-    return validSolution
-  }
-
-  // Create arrays out of each column
+  // Create and check colums
   const verticalArrays = createVerticalArrays(sudokuArray)
-  validSolution = validateArrayGroup(verticalArrays)
-  if (!validSolution) {
-    return validSolution
+  if (!validateArrayGroup(verticalArrays)) {
+    return false
   }
 
   // ToDo: Create 3x3 sub-arrays
   const subArrays = createSubArrays(sudokuArray)
-  validSolution = validateArrayGroup(subArrays)
-  return validSolution
-}
-
-function findZeros(twoDArray) {
-  const hasZeros = twoDArray.some(e => e.includes(0)) ? false : validSolution
-  return hasZeros
+  return validateArrayGroup(subArrays)
 }
 
 function validateArrayGroup(twoDArray) {
