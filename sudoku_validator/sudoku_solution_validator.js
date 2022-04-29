@@ -2,19 +2,67 @@ function validSolution(sudokuArray) {
   let validSolution = true
 
   // Return false if you find any zeros
-  validSolution = sudokuArray.some(e => e.includes(0)) ? false : validSolution
+  validSolution = findZeros(sudokuArray)
+
+  // Check horizontal rows for numbers 1-9
+  validSolution = validateArrayGroup(sudokuArray)
   if (!validSolution) {
-    console.log('FOUND A ZERO returning: ', validSolution)
     return validSolution
   }
 
-  // Create horizontal arrays our of each vertical row and concat those onto the sudokuArray
+  // Create arrays out of each column
+  const verticalArrays = createVerticalArrays(sudokuArray)
+
+  // Check vertical 9x9 arrays for numbers 1-9
+  validSolution = validateArrayGroup(verticalArrays)
+  if (!validSolution) {
+    return validSolution
+  }
+
+  // ToDo: Create 3x3 sub-arrays
+  const subArrays = createSubArrays(sudokuArray)
+  // ToDo: Check 3x3 sub-arrays
+  validSolution = validateArrayGroup(subArrays)
+  return validSolution
+}
+
+function findZeros(twoDArray) {
+  const hasZeros = twoDArray.some(e => e.includes(0)) ? false : validSolution
+  if (!hasZeros) {
+    return hasZeros
+  }
+  return hasZeros
+}
+
+function validateArrayGroup(twoDArray) {
+  if (twoDArray.length < 9) {
+    throw new Error('Insufficient Array Length: ', `Array has only ${twoDArray.length} items.`)
+  }
+  for (let i = 0; i < twoDArray.length; i++) {
+    const nestedArray = twoDArray[i]
+    const requiredNums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    if (nestedArray.length) {
+      for (let i = 0; i < requiredNums.length; i++) {
+        const element = requiredNums[i];
+        if (!nestedArray.includes(element)) {
+          console.log('Nested Array: ', nestedArray, 'does not include: ', element)
+          console.log('FOUND an invalid row returning: ', false)
+          return false
+        }
+      }
+    }
+  }
+  return true
+}
+
+function createVerticalArrays(twoDArray) {
+  let count = 0
   let verticalArrays = []
   let verticalArray = []
-  count = 0
-  while (count < sudokuArray.length) {
-    for (let i = 0; i < sudokuArray.length; i++) {
-      const nestedArray = sudokuArray[i];
+
+  while (count < twoDArray.length) {
+    for (let i = 0; i < twoDArray.length; i++) {
+      const nestedArray = twoDArray[i];
       const item = nestedArray[count]
       verticalArray.push(item)
     }
@@ -22,44 +70,40 @@ function validSolution(sudokuArray) {
     verticalArray = []
     count++
   }
-
-  // Check vertical 9x9 arrays for numbers 1-9
-  for (let i = 0; i < verticalArrays.length; i++) {
-    const nestedArray = verticalArrays[i];
-    const requiredNums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    for (let i = 0; i < requiredNums.length; i++) {
-      const element = requiredNums[i];
-      if (!nestedArray.includes(element)) {
-        validSolution = false
-        console.log('Nested Array: ', nestedArray, 'does not include: ', element)
-        console.log('FOUND an invalid row returning: ', validSolution)
-        return validSolution
-      }
-    }
-  }
-
-  // Check horizontal 9x9 arrays for numbers 1-9
-  for (let i = 0; i < sudokuArray.length; i++) {
-    const nestedArray = sudokuArray[i]
-    const requiredNums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    for (let i = 0; i < requiredNums.length; i++) {
-      const element = requiredNums[i];
-      if (!nestedArray.includes(element)) {
-        validSolution = false
-        console.log('Nested Array: ', nestedArray, 'does not include: ', element)
-        console.log('FOUND an invalid row returning: ', validSolution)
-        return validSolution
-      }
-    }
-  }
-
-  // ToDo: Check 3x3 sub-arrays
-
-  console.log('STATUS: ', validSolution)
-  return validSolution
+  return verticalArrays
 }
 
+function createSubArrays(twoDArray) {
+  let count = 0
+  let subArrays = []
+  let subArray = []
 
+  while (arrayHasItems(twoDArray)) {
+    for (let i = 0; i < twoDArray.length; i++) {
+      const nestedArray = twoDArray[i];
+      const slice = nestedArray.splice(0, 3)
+      subArray = subArray.concat(slice)
+      count++
+
+      if (count === 3) {
+        subArrays.push(subArray)
+        subArray = []
+        count = 0
+      }
+    }
+  }
+  return subArrays
+}
+
+function arrayHasItems(twoDArray) {
+  for (let i = 0; i < twoDArray.length; i++) {
+    const element = twoDArray[i];
+    if (element.length) {
+      return true
+    }
+  }
+  return false
+}
 
 // validSolution([
 //   [5, 3, 4, 6, 7, 8, 9, 1, 2],
@@ -96,14 +140,14 @@ function validSolution(sudokuArray) {
 //   [2, 7, 3, 6, 9, 1, 8, 5, 4]
 // ]); // => false
 
-validSolution([
-  [1,2,3,4,5,6,7,8,9],
-  [2,3,1,5,6,4,8,9,7],
-  [3,1,2,6,4,5,9,7,8],
-  [4,5,6,7,8,9,1,2,3],
-  [5,6,4,8,9,7,2,3,1],
-  [6,4,5,9,7,8,3,1,2],
-  [7,8,9,1,2,3,4,5,6],
-  [8,9,7,2,3,1,5,6,4],
-  [9,7,8,3,1,2,6,4,5]
-]) // => false
+// validSolution([
+//   [1,2,3,4,5,6,7,8,9],
+//   [2,3,1,5,6,4,8,9,7],
+//   [3,1,2,6,4,5,9,7,8],
+//   [4,5,6,7,8,9,1,2,3],
+//   [5,6,4,8,9,7,2,3,1],
+//   [6,4,5,9,7,8,3,1,2],
+//   [7,8,9,1,2,3,4,5,6],
+//   [8,9,7,2,3,1,5,6,4],
+//   [9,7,8,3,1,2,6,4,5]
+// ]) // => false
