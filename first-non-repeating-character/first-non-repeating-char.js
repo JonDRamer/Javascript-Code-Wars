@@ -14,12 +14,9 @@ function firstNonRepeatingChar(s) {
     if (!s) return '#'
     let firstNonRepeatingChar = null;
     for (let i = 0; i < s.length; i++) {
-        for (let j = i+1; j < s.length; j++) {
-            if (s[i] !== s[j] && s[i] !== s[i-1]) {
-                firstNonRepeatingChar = s[i]
-                return firstNonRepeatingChar
-            }
-            break;
+        if (s[i] !== s[i+1] && s[i] !== s[i-1]) {
+            firstNonRepeatingChar = s[i]
+            return firstNonRepeatingChar
         }
         firstNonRepeatingChar = s[i] !== s[i-1] ? s[i] : '#'
     }
